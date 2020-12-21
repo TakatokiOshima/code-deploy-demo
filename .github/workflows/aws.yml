@@ -1,6 +1,6 @@
 name: AWS Code Deploy
 on:
-  merge:
+  push:
     branches: [ main ]
 
 jobs:

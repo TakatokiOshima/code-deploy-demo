@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Run AWS CodeDeploy
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           args: deploy create-deployment --application-name "CodeDeployDemoApp" --deployment-group-name "AutoDeployDemoGroup" --github-location repository="TakatokiOshima/code-deploy-demo",commitId="${{ github.sha }}"
         env:

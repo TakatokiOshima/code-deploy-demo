@@ -10,8 +10,8 @@ jobs:
 
     steps:
     - name: Run AWS CodeDeploy
-        with:
-          args: deploy create-deployment --application-name "CodeDeployDemoApp" --deployment-group-name "AutoDeployDemoGroup" --github-location repository="TakatokiOshima/code-deploy-demo",commitId="${{ github.sha }}"
+      with:
+        args: deploy create-deployment --application-name "CodeDeployDemoApp" --deployment-group-name "AutoDeployDemoGroup" --github-location repository="TakatokiOshima/code-deploy-demo",commitId="${{ github.sha }}"
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

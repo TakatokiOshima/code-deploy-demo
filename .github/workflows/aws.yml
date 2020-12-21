@@ -2,17 +2,17 @@ name: AWS Code Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
+
 jobs:
-  listS3:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Run AWS CodeDeploy
-      - run: git pull
-      - uses: chrislennon/action-aws-cli@v1.1
+    - name: Run AWS CodeDeploy
         with:
           args: deploy create-deployment --application-name "CodeDeployDemoApp" --deployment-group-name "AutoDeployDemoGroup" --github-location repository="TakatokiOshima/code-deploy-demo",commitId="${{ github.sha }}"
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: "ap-northeast-1"
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: "ap-northeast-1"

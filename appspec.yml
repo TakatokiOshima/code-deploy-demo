@@ -3,4 +3,4 @@
   os: linux
   files:
     - source: /
-      destination: /home/ubuntu/src/github.com/hogehoge/ ※インスタンスのどのディレクトリにデプロイするか指定する
+      destination: /home/ec2-user/code-deploy-demo

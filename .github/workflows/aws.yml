@@ -7,6 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Run AWS CodeDeploy
+      run: git pull
       with:
         args: deploy create-deployment --application-name "CodeDeployDemoApp" --deployment-group-name "AutoDeployDemoGroup" --github-location repository="TakatokiOshima/code-deploy-demo",commitId="${{ github.sha }}"
       env:

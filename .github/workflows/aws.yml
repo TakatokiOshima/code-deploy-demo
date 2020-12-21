@@ -11,10 +11,11 @@ jobs:
     steps:
       - uses: chrislennon/action-aws-cli@v1.1
 
+      - name: Set AWS region
+        run: aws configure set region "ap-northeast-1"
+
       - name: Run AWS CodeDeploy
-        with:
-          args: deploy create-deployment --application-name "CodeDeployDemoApp" --deployment-group-name "AutoDeployDemoGroup" --github-location repository="TakatokiOshima/code-deploy-demo",commitId="${{ github.sha }}"
+        run: aws deploy create-deployment --application-name "CodeDeployDemoApp" --deployment-group-name "AutoDeployDemoGroup" --github-location repository="TakatokiOshima/code-deploy-demo",commitId="${{ github.sha }}"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ap-northeast-1
